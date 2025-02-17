@@ -1,6 +1,0 @@
-# This section is just used to bootstrap the project. It can be safely removed.
-[template]
-[template.environment]
-  PAYLOAD_SECRET = "Payload secret, used to encrypt JWT tokens"
-  MONGODB_URI = "Define your database connection string. If using MongoDB, define the connection string here:"
-  POSTGRES_URI = "Alternatively, define the PostgreSQL connection string here:"
