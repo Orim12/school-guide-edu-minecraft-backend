@@ -1,10 +1,19 @@
 import { Octokit } from '@octokit/rest';
 import { config } from 'dotenv';
 import type { RequestHandler } from '@sveltejs/kit';
+import { requireAuth } from '$lib/auth';
+import Cookies from 'js-cookie';
 
 config();
 
 export const POST: RequestHandler = async ({ request }) => {
+  const cookieHeader = request.headers.get('cookie');
+  const cookies = new Map(cookieHeader?.split('; ').map(c => {
+    const [key, ...v] = c.split('=');
+    return [key, v.join('=')];
+  }));
+  const session = cookies.get('session');
+  requireAuth(session);
   const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
   const formData = await request.formData();
   const file = formData.get('file') as Blob;

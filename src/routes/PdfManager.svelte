@@ -1,7 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
+	import Cookies from 'js-cookie';
+	import { requireAuth } from '$lib/auth';
 	let pdfFile;
 	let pdfFiles = [];
+
+	$: requireAuth(Cookies.get('session'));
 
 	function handleFileChange(event) {
 		pdfFile = event.target.files[0];
