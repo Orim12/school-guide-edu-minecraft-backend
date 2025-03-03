@@ -1,1 +1,8 @@
-# school-guide-edu-minecraft
+# blank
+
+blank
+
+## Attributes
+
+- **Database**: mongodb
+- **Storage Adapter**: localDisk
